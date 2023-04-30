@@ -1,0 +1,13 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "my first electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^23.1.3"
+  }
+}

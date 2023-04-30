@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>my first electron application</title>
+  </head>
+  <body>
+    <h1>my first electron application</h1>
+    <section>
+      We are using Node.js <span id="node-version"></span>,<br />
+      Chromium <span id="chrome-version"></span>,<br />
+      and Electron <span id="electron-version"></span>.
+    </section>
+    <hr />
+    <section>
+      <button type="button" data-set-title>set Title</button><br />
+      <label for="title">
+        Title:
+        <input id="title" type="text" />
+      </label>
+    </section>
+    <hr />
+    <section>
+      <button type="button" data-open-file>open file</button>
+      File path: <strong data-file-path></strong>
+    </section>
+    <hr />
+    <section>Counter value: <strong data-counter-value>0</strong></section>
+    .
+
+    <!-- You can also require other files to run in this process -->
+    <!-- <script src="path/to/js/file"></script> -->
+    <script src="js/renderer.js"></script>
+  </body>
+</html>
