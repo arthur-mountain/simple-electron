@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, dialog, Menu } = require("electron");
 const path = require("path");
 
 const createWindow = () => {
-  // create browser window
+  // Create browser window
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -11,10 +11,10 @@ const createWindow = () => {
     },
   });
 
-  // setup menu
+  // Setup menu
   setUpMenu(mainWindow);
 
-  // load view of window
+  // Load frontend view
   mainWindow.loadFile("views/index.html");
 
   // Open the DevTools.
@@ -41,7 +41,7 @@ function setUpMenu(mainWin) {
   Menu.setApplicationMenu(menu);
 }
 
-// handle main process events
+// Handle main process events
 const handleMainProcessEvents = () => {
   // Quit when all windows are closed, except on macOS. There, it's common
   // for applications and their menu bar to stay active until the user quits
@@ -71,22 +71,22 @@ const windowEventUtils = {
   },
 };
 
-// handle window preocess events(renderer process)
+// Handle window processes events(renderer process)
 const handleWindowEvents = () => {
-  // handler render process lisnter before load html file
+  // Handler render process lisnter before load html file
   ipcMain.handle("ping", () => "pong");
 
-  // listen set title
+  // Listen set title
   ipcMain.on("set-title", (event, title) => {
     const webContents = event.sender;
     const win = BrowserWindow.fromWebContents(webContents);
     win.setTitle(title);
   });
 
-  // listen open dialog
+  // Listen open dialog
   ipcMain.handle("dialog:openFile", windowEventUtils.handleDiaLogOpen);
 
-  // menu events
+  // Menu events
   ipcMain.on("counter-value", (_evt, val) => {
     console.log("receive val: ", val);
   });
